@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Product Card</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f1f5f9; margin: 30px; display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+    .product-card {
+      width: 320px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    #productImg {
+      width: 100%;
+      height: 200px;
+      display: block;
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    /* Hover appearance change */
+    .img-wrapper.hovered #productImg {
+      transform: scale(1.08);
+      filter: brightness(0.9);
+    }
+
+    #extraInfo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.9);
+      color: white;
+      padding: 8px;
+      font-size: 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .img-wrapper.hovered #extraInfo {
+      transform: translateY(0);
+    }
+
+    h3 { margin: 15px 0 5px 0; color: #0f172a; font-size: 18px; }
+    .category { color: #64748b; font-size: 12px; margin-bottom: 12px; }
+
+    .btn-details {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-details:hover { background: #1d4ed8; }
+
+    #detailsBox {
+      display: none;
+      margin-top: 15px;
+      background: #ecfdf5;
+      border: 1px solid #10b981;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #065f46;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-card">
+    <div class="img-wrapper" id="imgWrapper" onmouseenter="onImgEnter()" onmouseleave="onImgLeave()">
+      <img id="productImg" src="/assets/img/headphones.jpg" alt="SonicPro Headphones">
+      <div id="extraInfo">&#9733; 40mm Neodymium Drivers &bull; 40-hr Battery Life &bull; ANC</div>
+    </div>
+
+    <h3>SonicPro ANC Headphones</h3>
+    <div class="category">Audio &bull; Wireless Series</div>
+
+    <button class="btn-details" onclick="toggleDetails()">View Details</button>
+
+    <div id="detailsBox">
+      <strong>Price:</strong> ₹4,999 (Inclusive of all taxes)<br>
+      <strong>Availability:</strong> In Stock (14 Units at Vellore Warehouse)
+    </div>
+
+    <div style="margin-top: 15px; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+      Task 30 &bull; M. Arulmurugan (24MIC0121)
+    </div>
+  </div>
+
+  <script>
+    function onImgEnter() {
+      document.getElementById('imgWrapper').classList.add('hovered');
+    }
+
+    function onImgLeave() {
+      document.getElementById('imgWrapper').classList.remove('hovered');
+    }
+
+    function toggleDetails() {
+      const box = document.getElementById('detailsBox');
+      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
+
+</body>
+</html>

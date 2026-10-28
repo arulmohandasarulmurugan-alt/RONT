@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Registration Web Page</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; margin: 30px; color: #1e293b; }
+    .form-container { max-width: 650px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.06); }
+    h2 { color: #1e3a8a; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-top: 0; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+      width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #2563eb; }
+    .radio-group, .checkbox-group { display: flex; gap: 18px; margin-top: 4px; font-size: 14px; }
+    .radio-group label, .checkbox-group label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    .btn-row { display: flex; gap: 12px; margin-top: 24px; }
+    .btn-submit { background-color: #2563eb; color: white; border: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-reset { background-color: #64748b; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-submit:hover { background-color: #1d4ed8; }
+    .btn-reset:hover { background-color: #475569; }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Employee Registration Form</h2>
+    <p style="font-size: 13px; color: #64748b; margin-top: -5px; margin-bottom: 20px;">
+      Registered by HR Portal &bull; Lab Student: <strong>M. Arulmurugan</strong> (24MIC0121)
+    </p>
+
+    <form action="#" method="post">
+      
+      <div class="form-group">
+        <label for="empName">Employee Name:</label>
+        <input type="text" id="empName" name="empName" placeholder="e.g. M. Arulmurugan" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empId">Employee ID:</label>
+        <input type="text" id="empId" name="empId" placeholder="e.g. EMP-24MIC0121" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empEmail">Email Address:</label>
+        <input type="email" id="empEmail" name="empEmail" placeholder="employee@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empMobile">Mobile Number:</label>
+        <input type="tel" id="empMobile" name="empMobile" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empDob">Date of Birth:</label>
+        <input type="date" id="empDob" name="empDob" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="empDept">Department:</label>
+        <select id="empDept" name="empDept" required>
+          <option value="">-- Select Department --</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Software Development">Software Development</option>
+          <option value="Cloud Architecture">Cloud Architecture</option>
+          <option value="Data Analytics">Data Analytics</option>
+          <option value="Human Resources">Human Resources</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Technical Skills:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="skills" value="HTML5"> HTML5</label>
+          <label><input type="checkbox" name="skills" value="CSS3"> CSS3</label>
+          <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+          <label><input type="checkbox" name="skills" value="Python"> Python</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="empDoj">Date of Joining:</label>
+        <input type="date" id="empDoj" name="empDoj" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empAddress">Residential Address:</label>
+        <textarea id="empAddress" name="empAddress" rows="3" placeholder="Enter complete address..." required></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn-submit">Submit Registration</button>
+        <button type="reset" class="btn-reset">Reset Form</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

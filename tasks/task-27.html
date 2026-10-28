@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration - Regular Expression Validation</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; margin: 30px; color: #1e293b; }
+    .card { max-width: 520px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+    h2 { color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-top: 0; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px; }
+    input[type="text"] { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; }
+    .error-text { color: #dc2626; font-size: 12px; font-weight: bold; margin-top: 4px; display: none; }
+    .radio-row, .check-row { display: flex; gap: 18px; font-size: 14px; margin-top: 5px; }
+    .radio-row label, .check-row label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    .btn-submit { background: #2563eb; color: white; border: none; padding: 11px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; font-size: 15px; }
+    .btn-submit:hover { background: #1d4ed8; }
+    .success-alert { display: none; background: #ecfdf5; border: 2px solid #10b981; color: #065f46; padding: 15px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Student Registration Form</h2>
+    <p style="font-size: 12px; color: #64748b; margin-top: -5px; margin-bottom: 20px;">
+      Regex Validation Suite &bull; Developer: <strong>M. Arulmurugan</strong> (24MIC0121)
+    </p>
+
+    <form id="regForm" onsubmit="validateStudentForm(event)">
+      
+      <!-- Student Name -->
+      <div class="form-group">
+        <label for="stuName">Student Name:</label>
+        <input type="text" id="stuName" placeholder="e.g. M Arulmurugan">
+        <div id="nameError" class="error-text">&#9888; Name must contain only alphabets and spaces!</div>
+      </div>
+
+      <!-- Email ID -->
+      <div class="form-group">
+        <label for="stuEmail">Email ID:</label>
+        <input type="text" id="stuEmail" placeholder="e.g. arul@vit.ac.in">
+        <div id="emailError" class="error-text">&#9888; Please enter a valid email address!</div>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label>Gender:</label>
+        <div class="radio-row">
+          <label><input type="radio" name="gender" value="Male"> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+        <div id="genderError" class="error-text">&#9888; Please select your gender!</div>
+      </div>
+
+      <!-- Skills -->
+      <div class="form-group">
+        <label>Skills:</label>
+        <div class="check-row">
+          <label><input type="checkbox" name="skill" value="HTML"> HTML</label>
+          <label><input type="checkbox" name="skill" value="CSS"> CSS</label>
+          <label><input type="checkbox" name="skill" value="JavaScript"> JavaScript</label>
+        </div>
+        <div id="skillError" class="error-text">&#9888; Please select at least one skill!</div>
+      </div>
+
+      <button type="submit" class="btn-submit">Register Student</button>
+    </form>
+
+    <div id="successBox" class="success-alert">
+      &#10004; Registration Successful!
+    </div>
+  </div>
+
+  <script>
+    function validateStudentForm(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const nameVal = document.getElementById('stuName').value.trim();
+      const emailVal = document.getElementById('stuEmail').value.trim();
+      const genderChecked = document.querySelector('input[name="gender"]:checked');
+      const skillsChecked = document.querySelectorAll('input[name="skill"]:checked');
+
+      // 1. Name: only alphabets and spaces
+      const nameRegex = /^[A-Za-z\s]+$/;
+      if (!nameVal || !nameRegex.test(nameVal)) {
+        document.getElementById('nameError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('nameError').style.display = 'none';
+      }
+
+      // 2. Email Regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        document.getElementById('emailError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('emailError').style.display = 'none';
+      }
+
+      // 3. Gender
+      if (!genderChecked) {
+        document.getElementById('genderError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('genderError').style.display = 'none';
+      }
+
+      // 4. Skills (at least one)
+      if (skillsChecked.length === 0) {
+        document.getElementById('skillError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('skillError').style.display = 'none';
+      }
+
+      const successBox = document.getElementById('successBox');
+      if (valid) {
+        successBox.style.display = 'block';
+      } else {
+        successBox.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATM PIN Entry Screen</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; text-align: center; padding: 40px 20px; }
+    .atm-terminal { max-width: 420px; margin: 0 auto; background: #1e293b; border: 2px solid #334155; border-radius: 16px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    h2 { color: #38bdf8; margin-top: 0; font-size: 22px; }
+    
+    .pin-input {
+      width: 220px;
+      letter-spacing: 14px;
+      font-size: 28px;
+      text-align: center;
+      padding: 10px;
+      border: 2px solid #475569;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #38bdf8;
+      outline: none;
+      box-sizing: border-box;
+      margin: 15px auto;
+      display: block;
+    }
+    .pin-input:focus { border-color: #38bdf8; }
+
+    #atmStatus { min-height: 24px; font-size: 14px; font-weight: bold; margin-top: 15px; color: #94a3b8; }
+    #atmWarning { min-height: 20px; font-size: 13px; font-weight: bold; color: #ef4444; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="atm-terminal">
+    <h2>VIT Secure ATM Terminal</h2>
+    <p style="font-size: 12px; color: #94a3b8;">Enter 4-Digit Security PIN &bull; Press Enter to Submit</p>
+
+    <input type="password" id="pinField" class="pin-input" maxlength="4" placeholder="••••" onkeydown="handleAtmKey(event)">
+
+    <div id="atmStatus">Please enter your 4-digit numeric PIN.</div>
+    <div id="atmWarning"></div>
+
+    <div style="margin-top: 25px; font-size: 11px; color: #64748b; border-top: 1px solid #334155; padding-top: 10px;">
+      Cardholder: M. Arulmurugan (24MIC0121) &bull; Q35 ATM Validation
+    </div>
+  </div>
+
+  <script>
+    let entryStarted = false;
+
+    function handleAtmKey(e) {
+      const warning = document.getElementById('atmWarning');
+      const status = document.getElementById('atmStatus');
+      warning.textContent = "";
+
+      // Allowed navigation keys
+      if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
+        return;
+      }
+
+      // Enter key submits PIN
+      if (e.key === 'Enter') {
+        const pin = document.getElementById('pinField').value;
+        if (pin.length === 4) {
+          status.textContent = "PIN Submitted Successfully";
+          status.style.color = "#22c55e";
+          warning.textContent = "";
+        } else {
+          warning.textContent = "Warning: PIN must be exactly 4 digits!";
+        }
+        return;
+      }
+
+      // Allow only numbers
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+        warning.textContent = "Warning: Only numbers are allowed in PIN field!";
+        return;
+      }
+
+      // First valid numeric key entry
+      if (!entryStarted) {
+        entryStarted = true;
+        status.textContent = "PIN Entry Started";
+        status.style.color = "#38bdf8";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Search Engine Header</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; }
+    
+    .search-header {
+      background-color: #1e3a8a;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .header-title {
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .search-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      width: 280px;
+      padding: 10px 16px;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      background-color: #ffffff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+    }
+
+    .dropdown-select {
+      padding: 10px 14px;
+      border: 1px solid #93c5fd;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #ffffff;
+      color: #1e293b;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .btn-search {
+      background-color: #f59e0b;
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn-search:hover {
+      background-color: #d97706;
+      transform: translateY(-1px);
+    }
+
+    .demo-content {
+      padding: 40px;
+      text-align: center;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="search-header">
+    <h1 class="header-title">Smart Search Engine</h1>
+    
+    <div class="search-controls">
+      <input type="text" class="search-input" placeholder="Search products, services, or articles...">
+      
+      <select class="dropdown-select">
+        <option>All Categories</option>
+        <option>Electronics</option>
+        <option>Books</option>
+        <option>Clothing</option>
+        <option>Groceries</option>
+      </select>
+
+      <select class="dropdown-select">
+        <option>Any Price</option>
+        <option>Under ₹500</option>
+        <option>₹500 – ₹2,000</option>
+        <option>Above ₹2,000</option>
+      </select>
+
+      <button class="btn-search">Search</button>
+    </div>
+  </header>
+
+  <div class="demo-content">
+    <h2>Explore Everything at Your Fingertips</h2>
+    <p>Dynamic search header bar styled with modern CSS box-model, flexbox alignment, and interactive hover states.</p>
+    <p style="font-size: 13px; color: #64748b;">FrontEnd Lab Project &bull; M. Arulmurugan (24MIC0121)</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" fill="#0f172a"/>
+  <circle cx="320" cy="180" r="140" fill="url(#grad)" opacity="0.15"/>
+  <defs>
+    <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+  </defs>
+  <polygon points="300,150 355,180 300,210" fill="#38bdf8"/>
+  <circle cx="320" cy="180" r="45" stroke="#38bdf8" stroke-width="3" fill="none"/>
+  <text x="320" y="260" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">National Technical Symposium 2026</text>
+  <text x="320" y="290" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">Official Promo Teaser &amp; Overview</text>
+</svg>

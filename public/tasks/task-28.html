@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Registration Form</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; margin: 30px; color: #1e293b; }
+    .card { max-width: 540px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+    h2 { color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-top: 0; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px; }
+    input[type="text"], select { width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none; }
+    select[multiple] { height: 110px; padding: 6px; }
+    .error-text { color: #dc2626; font-size: 12px; font-weight: bold; margin-top: 4px; display: none; }
+    .btn-submit { background: #2563eb; color: white; border: none; padding: 11px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; font-size: 15px; }
+    .btn-submit:hover { background: #1d4ed8; }
+    .summary-card { margin-top: 25px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px; display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Course Registration Form</h2>
+    <p style="font-size: 12px; color: #64748b; margin-top: -5px; margin-bottom: 20px;">
+      Student: <strong>M. Arulmurugan</strong> (24MIC0121) &bull; VIT University
+    </p>
+
+    <form id="courseForm" onsubmit="handleCourseSubmit(event)">
+      
+      <div class="form-group">
+        <label for="cName">Student Name:</label>
+        <input type="text" id="cName" placeholder="Enter student name">
+        <div id="cNameError" class="error-text">&#9888; Student name must contain only alphabets and spaces!</div>
+      </div>
+
+      <div class="form-group">
+        <label for="cDept">Department:</label>
+        <select id="cDept">
+          <option value="">-- Choose Department --</option>
+          <option value="CSE">CSE (Computer Science &amp; Engineering)</option>
+          <option value="IT">IT (Information Technology)</option>
+          <option value="ECE">ECE (Electronics &amp; Communication)</option>
+          <option value="EEE">EEE (Electrical &amp; Electronics)</option>
+        </select>
+        <div id="cDeptError" class="error-text">&#9888; Please select a department!</div>
+      </div>
+
+      <div class="form-group">
+        <label for="cLang">Programming Languages (Hold Ctrl / Cmd to select multiple):</label>
+        <select id="cLang" multiple>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="C++">C++</option>
+        </select>
+        <div id="cLangError" class="error-text">&#9888; Please select at least one programming language!</div>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Course Registration</button>
+    </form>
+
+    <div id="courseSummary" class="summary-card">
+      <h3 style="color: #1e40af; margin-top: 0;">&#10004; Registration Details Summary</h3>
+      <div id="summaryContent" style="font-size: 14px; line-height: 1.8;"></div>
+    </div>
+  </div>
+
+  <script>
+    function handleCourseSubmit(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const nameVal = document.getElementById('cName').value.trim();
+      const deptVal = document.getElementById('cDept').value;
+      const langSelect = document.getElementById('cLang');
+      const selectedLangs = Array.from(langSelect.selectedOptions).map(opt => opt.value);
+
+      // Regex validation for student name (alphabets and spaces only)
+      const nameRegex = /^[A-Za-z\s]+$/;
+      if (!nameVal || !nameRegex.test(nameVal)) {
+        document.getElementById('cNameError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('cNameError').style.display = 'none';
+      }
+
+      if (!deptVal) {
+        document.getElementById('cDeptError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('cDeptError').style.display = 'none';
+      }
+
+      if (selectedLangs.length === 0) {
+        document.getElementById('cLangError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('cLangError').style.display = 'none';
+      }
+
+      const summaryCard = document.getElementById('courseSummary');
+      const summaryContent = document.getElementById('summaryContent');
+
+      if (valid) {
+        summaryContent.innerHTML = '<strong>Student Name:</strong> ' + nameVal + '<br>' +
+          '<strong>Department:</strong> ' + deptVal + '<br>' +
+          '<strong>Selected Languages:</strong> ' + selectedLangs.join(', ') + '<br>' +
+          '<strong>Status:</strong> Approved &amp; Enrolled in Spring 2026';
+        summaryCard.style.display = 'block';
+      } else {
+        summaryCard.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>

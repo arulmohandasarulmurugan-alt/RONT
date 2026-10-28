@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Comprehensive Patient Registration Form - 20 Input Types</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 30px 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-wrapper {
+      max-width: 860px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-header {
+      text-align: center;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .form-header h2 {
+      margin: 0;
+      color: #0369a1;
+      font-size: 26px;
+    }
+
+    .form-header p {
+      margin: 5px 0 0 0;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 18px 24px;
+    }
+
+    .field-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field-box.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+
+    .input-control {
+      padding: 9px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #f8fafc;
+    }
+
+    .input-control:focus {
+      border-color: #0284c7;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .color-picker {
+      height: 42px;
+      padding: 3px 6px;
+      cursor: pointer;
+    }
+
+    .range-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      gap: 15px;
+      padding-top: 6px;
+      font-size: 14px;
+    }
+
+    .radio-group label, .checkbox-group label {
+      font-weight: normal;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .actions-section {
+      grid-column: 1 / -1;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn-submit-std {
+      background-color: #0284c7;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-reset-std {
+      background-color: #64748b;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .image-btn-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .image-btn-box span {
+      font-size: 12px;
+      font-weight: bold;
+      color: #0f766e;
+    }
+
+    input[type="image"] {
+      cursor: pointer;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    input[type="image"]:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <div class="form-header">
+      <h2>Comprehensive Patient Registration Portal</h2>
+      <p>Demonstrating All 20 HTML5 Input Types &bull; Student: <strong>M. Arulmurugan</strong> (24MIC0121)</p>
+    </div>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+      
+      <!-- 18. Hidden Patient ID -->
+      <input type="hidden" name="patientId" value="PT-24MIC0121-789">
+
+      <div class="grid-container">
+
+        <!-- 1. Patient Name (text) -->
+        <div class="field-box">
+          <label for="pName">1. Patient Name (text):</label>
+          <input type="text" id="pName" name="patientName" class="input-control" placeholder="e.g. M. Arulmurugan" required>
+        </div>
+
+        <!-- 2. Email (email) -->
+        <div class="field-box">
+          <label for="pEmail">2. Email Address (email):</label>
+          <input type="email" id="pEmail" name="patientEmail" class="input-control" placeholder="patient@healthcare.org" required>
+        </div>
+
+        <!-- 3. Password (password) -->
+        <div class="field-box">
+          <label for="pPass">3. Portal Password (password):</label>
+          <input type="password" id="pPass" name="patientPass" class="input-control" placeholder="Create secure password" required minlength="6">
+        </div>
+
+        <!-- 4. Contact Number (tel) -->
+        <div class="field-box">
+          <label for="pTel">4. Contact Number (tel):</label>
+          <input type="tel" id="pTel" name="patientTel" class="input-control" placeholder="10-digit number" pattern="[0-9]{10}" required>
+        </div>
+
+        <!-- 5. Age (number) -->
+        <div class="field-box">
+          <label for="pAge">5. Age (number):</label>
+          <input type="number" id="pAge" name="patientAge" class="input-control" min="1" max="120" placeholder="e.g. 21" required>
+        </div>
+
+        <!-- 6. Date of Birth (date) -->
+        <div class="field-box">
+          <label for="pDob">6. Date of Birth (date):</label>
+          <input type="date" id="pDob" name="patientDob" class="input-control" required>
+        </div>
+
+        <!-- 7. Appointment Time (time) -->
+        <div class="field-box">
+          <label for="pTime">7. Appointment Time (time):</label>
+          <input type="time" id="pTime" name="patientTime" class="input-control" required>
+        </div>
+
+        <!-- 8. Appointment Date & Time (datetime-local) -->
+        <div class="field-box">
+          <label for="pDt">8. Full Slot (datetime-local):</label>
+          <input type="datetime-local" id="pDt" name="patientDateTime" class="input-control" required>
+        </div>
+
+        <!-- 9. Personal Website/Reference (url) -->
+        <div class="field-box">
+          <label for="pUrl">9. Personal / Health Record Link (url):</label>
+          <input type="url" id="pUrl" name="patientUrl" class="input-control" placeholder="https://example.com/record">
+        </div>
+
+        <!-- 10. Search Doctor (search) -->
+        <div class="field-box">
+          <label for="pDoc">10. Search Doctor (search):</label>
+          <input type="search" id="pDoc" name="searchDoctor" class="input-control" placeholder="Type doctor name or specialty">
+        </div>
+
+        <!-- 11. Consultation Color Theme (color) -->
+        <div class="field-box">
+          <label for="pColor">11. Consultation Card Theme (color):</label>
+          <input type="color" id="pColor" name="themeColor" value="#0284c7" class="input-control color-picker">
+        </div>
+
+        <!-- 12. Medical Record Upload (file) -->
+        <div class="field-box">
+          <label for="pFile">12. Upload Previous Record (file):</label>
+          <input type="file" id="pFile" name="patientReport" class="input-control" accept=".pdf, .png, .jpg">
+        </div>
+
+        <!-- 13. Pain Level (range) -->
+        <div class="field-box">
+          <label for="pPain">13. Current Pain Level (range 1 to 10):</label>
+          <div class="range-wrapper">
+            <input type="range" id="pPain" name="painLevel" min="1" max="10" value="3" oninput="document.getElementById('painVal').textContent = this.value" style="flex: 1;">
+            <span id="painVal" style="font-weight: bold; color: #0284c7; width: 24px;">3</span>
+          </div>
+        </div>
+
+        <!-- 14. Gender (radio) -->
+        <div class="field-box">
+          <label>14. Gender (radio):</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+            <label><input type="radio" name="gender" value="Other"> Other</label>
+          </div>
+        </div>
+
+        <!-- 15. Known Allergies (checkbox) -->
+        <div class="field-box">
+          <label>15. Known Allergies (checkbox):</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="allergies" value="Penicillin"> Penicillin</label>
+            <label><input type="checkbox" name="allergies" value="Peanuts"> Peanuts</label>
+            <label><input type="checkbox" name="allergies" value="Pollen"> Pollen</label>
+          </div>
+        </div>
+
+        <!-- 16. Blood Group (select) -->
+        <div class="field-box">
+          <label for="pBlood">16. Blood Group (select):</label>
+          <select id="pBlood" name="bloodGroup" class="input-control" required>
+            <option value="">-- Select Blood Group --</option>
+            <option value="A+">A +ve</option>
+            <option value="A-">A -ve</option>
+            <option value="B+">B +ve</option>
+            <option value="B-">B -ve</option>
+            <option value="O+">O +ve</option>
+            <option value="O-">O -ve</option>
+            <option value="AB+">AB +ve</option>
+            <option value="AB-">AB -ve</option>
+          </select>
+        </div>
+
+        <!-- 17. Address (textarea) -->
+        <div class="field-box full-width">
+          <label for="pAddress">17. Residential Address (textarea):</label>
+          <textarea id="pAddress" name="patientAddress" rows="3" class="input-control" placeholder="Enter house no, street, locality, city and pincode..." required></textarea>
+        </div>
+
+      </div>
+
+      <!-- 19 & 20: Submit, Reset and Image Button for Payment -->
+      <div class="actions-section">
+        <div>
+          <!-- 19. Submit and Reset buttons -->
+          <button type="submit" class="btn-submit-std">19. Submit Form</button>
+          <button type="reset" class="btn-reset-std">Reset Form</button>
+        </div>
+
+        <div class="image-btn-box">
+          <span>20. Image Button for Payment:</span>
+          <!-- 20. Image Button -->
+          <input type="image" src="/assets/img/pay_now_btn.svg" alt="Pay Online Now" width="160" height="44">
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

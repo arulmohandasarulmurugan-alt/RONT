@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Management Header - Inline CSS</title>
+</head>
+<body style="margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f0fdf4;">
+
+  <!-- Hospital Management Header with INLINE CSS only -->
+  <header style="background-color: #ffffff; border-bottom: 2px solid #059669; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);">
+    
+    <!-- Left: Hospital Logo & Location -->
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="/assets/img/hospital_logo.svg" alt="CityCare Hospital Logo" width="140" height="44" style="display: block; border-radius: 6px;">
+      <div style="border-left: 2px solid #cbd5e1; padding-left: 12px;">
+        <span style="display: block; font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 0.5px;">Branch</span>
+        <strong style="color: #0f172a; font-size: 14px;">Vellore, Tamil Nadu</strong>
+      </div>
+    </div>
+
+    <!-- Center: Search Bar with Department Dropdown + Input + Search Button -->
+    <div style="display: flex; align-items: center; background-color: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 25px; padding: 4px; overflow: hidden;">
+      <select style="border: none; background: transparent; padding: 8px 12px; font-size: 13px; color: #334155; outline: none; border-right: 1px solid #cbd5e1; cursor: pointer;">
+        <option>All Departments</option>
+        <option>Cardiology</option>
+        <option>Neurology</option>
+        <option>Orthopedics</option>
+        <option>Pediatrics</option>
+        <option>General Medicine</option>
+      </select>
+      <input type="text" placeholder="Search doctor, symptom, clinic..." style="border: none; background: transparent; padding: 8px 14px; font-size: 13px; outline: none; width: 220px; color: #0f172a;">
+      <button style="background-color: #059669; color: #ffffff; border: none; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;">Search</button>
+    </div>
+
+    <!-- Right Sections: Patient Portal, Appointments, Emergency -->
+    <div style="display: flex; align-items: center; gap: 20px;">
+      
+      <!-- Patient Portal -->
+      <div style="text-align: right;">
+        <span style="display: block; font-size: 12px; color: #475569;">Welcome, Patient</span>
+        <a href="#profile" style="color: #0284c7; text-decoration: none; font-size: 13px; font-weight: bold;">My Profile</a>
+      </div>
+
+      <!-- Appointments -->
+      <div style="display: flex; gap: 8px;">
+        <a href="#book" style="background-color: #0284c7; color: white; text-decoration: none; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">Book Appointment</a>
+        <a href="#my-appts" style="background-color: #e2e8f0; color: #1e293b; text-decoration: none; padding: 7px 12px; border-radius: 6px; font-size: 13px; font-weight: bold;">My Appointments</a>
+      </div>
+
+      <!-- Emergency Contact -->
+      <div style="background-color: #fef2f2; border: 1px solid #fecaca; padding: 7px 14px; border-radius: 6px;">
+        <span style="color: #dc2626; font-weight: 800; font-size: 14px;">&#128657; Emergency: 108</span>
+      </div>
+
+    </div>
+
+  </header>
+
+  <div style="padding: 40px; text-align: center; color: #334155;">
+    <h2>CityCare Hospital Healthcare Management Portal</h2>
+    <p>Header constructed strictly using HTML and INLINE CSS.</p>
+    <p style="font-size: 13px; color: #64748b;">Created by: M. Arulmurugan (24MIC0121)</p>
+  </div>
+
+</body>
+</html>

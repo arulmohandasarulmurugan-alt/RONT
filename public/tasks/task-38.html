@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Image Viewer</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; text-align: center; padding: 35px 20px; }
+    .gallery-box { max-width: 660px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 14px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    h2 { color: #38bdf8; margin-top: 0; }
+    
+    .img-display-frame {
+      width: 100%;
+      height: 340px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 15px 0;
+      border: 2px solid #475569;
+      background: #000;
+    }
+    .img-display-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .nav-hint { font-size: 13px; color: #94a3b8; margin-top: 10px; }
+    .key-tag { background: #334155; color: #f8fafc; padding: 3px 8px; border-radius: 4px; font-family: monospace; }
+
+    #selectionBanner {
+      min-height: 28px;
+      font-size: 18px;
+      font-weight: 800;
+      color: #22c55e;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body onkeydown="handleCampusKeys(event)">
+
+  <div class="gallery-box">
+    <h2>VIT Campus Interactive Image Viewer</h2>
+    <p style="font-size: 13px; color: #94a3b8;">Use Keyboard: &larr; Left Arrow &bull; &rarr; Right Arrow &bull; Enter to Select</p>
+
+    <div class="img-display-frame">
+      <img id="campusImg" src="/assets/img/campus1.jpg" alt="Campus View">
+    </div>
+
+    <div id="campusTitle" style="font-size: 17px; font-weight: bold; color: #f8fafc;">
+      1. Academic Central Block &ndash; VIT Campus
+    </div>
+
+    <div class="nav-hint">
+      Press <span class="key-tag">&larr;</span> Prev &bull; <span class="key-tag">&rarr;</span> Next &bull; <span class="key-tag">Enter</span> Select
+    </div>
+
+    <div id="selectionBanner"></div>
+
+    <div style="margin-top: 20px; font-size: 12px; color: #64748b; border-top: 1px solid #334155; padding-top: 10px;">
+      Student: M. Arulmurugan (24MIC0121) &bull; Q38 Campus Viewer
+    </div>
+  </div>
+
+  <script>
+    const campusImages = [
+      { src: "/assets/img/campus1.jpg", title: "1. Academic Central Block – VIT Campus" },
+      { src: "/assets/img/campus2.jpg", title: "2. Central Library & Amphitheatre – VIT Campus" },
+      { src: "/assets/img/campus3.jpg", title: "3. Technology Innovation Tower – VIT Campus" }
+    ];
+    let currentIndex = 0;
+
+    function updateImage() {
+      document.getElementById('campusImg').src = campusImages[currentIndex].src;
+      document.getElementById('campusTitle').textContent = campusImages[currentIndex].title;
+      document.getElementById('selectionBanner').textContent = "";
+    }
+
+    function handleCampusKeys(e) {
+      if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % campusImages.length;
+        updateImage();
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + campusImages.length) % campusImages.length;
+        updateImage();
+      } else if (e.key === 'Enter') {
+        document.getElementById('selectionBanner').textContent = "Image Selected";
+      }
+    }
+  </script>
+
+</body>
+</html>

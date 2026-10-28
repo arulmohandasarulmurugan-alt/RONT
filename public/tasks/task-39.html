@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Photo Gallery Keyboard Controls</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; text-align: center; padding: 35px 20px; }
+    .gallery-card { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 14px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    h2 { color: #38bdf8; margin-top: 0; }
+    
+    .img-box { width: 100%; height: 320px; border-radius: 8px; overflow: hidden; margin: 15px 0; border: 2px solid #475569; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .keys-guide { display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 13px; color: #cbd5e1; }
+    .key-btn { background: #334155; padding: 5px 12px; border-radius: 6px; font-family: monospace; font-weight: bold; color: #38bdf8; }
+
+    #destNameDisplay {
+      min-height: 30px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body onkeydown="handleGalleryKeys(event)">
+
+  <div class="gallery-card">
+    <h2>Global Travel Photo Gallery</h2>
+    <p style="font-size: 13px; color: #94a3b8;">Control gallery with your keyboard:</p>
+
+    <div class="img-box">
+      <img id="galleryImg" src="/assets/img/dest_paris.jpg" alt="Destination Photo">
+    </div>
+
+    <div class="keys-guide">
+      <div>Press <span class="key-btn">N</span> for Next</div>
+      <div>Press <span class="key-btn">P</span> for Previous</div>
+      <div>Press <span class="key-btn">Spacebar</span> for Name</div>
+    </div>
+
+    <div id="destNameDisplay">Press Spacebar to Reveal Destination Name</div>
+
+    <div style="margin-top: 25px; font-size: 12px; color: #64748b; border-top: 1px solid #334155; padding-top: 10px;">
+      Student: M. Arulmurugan (24MIC0121) &bull; Q39 Keyboard Navigation
+    </div>
+  </div>
+
+  <script>
+    const destinations = [
+      { name: "Paris, France", img: "/assets/img/dest_paris.jpg" },
+      { name: "Kyoto, Japan", img: "/assets/img/dest_kyoto.jpg" },
+      { name: "Grand Canyon, USA", img: "/assets/img/dest_canyon.jpg" },
+      { name: "Swiss Alps, Switzerland", img: "/assets/img/dest_swiss.jpg" }
+    ];
+    let destIndex = 0;
+
+    function renderDestImage() {
+      document.getElementById('galleryImg').src = destinations[destIndex].img;
+      document.getElementById('destNameDisplay').textContent = "Press Spacebar to Reveal Destination Name";
+      document.getElementById('destNameDisplay').style.color = "#94a3b8";
+    }
+
+    function handleGalleryKeys(e) {
+      if (e.key === 'n' || e.key === 'N') {
+        destIndex = (destIndex + 1) % destinations.length;
+        renderDestImage();
+      } else if (e.key === 'p' || e.key === 'P') {
+        destIndex = (destIndex - 1 + destinations.length) % destinations.length;
+        renderDestImage();
+      } else if (e.key === ' ') {
+        e.preventDefault(); // Prevent page scroll on spacebar
+        const nameEl = document.getElementById('destNameDisplay');
+        nameEl.textContent = "Destination: " + destinations[destIndex].name;
+        nameEl.style.color = "#38bdf8";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart Checkout - Multi-Step</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; margin: 30px; color: #1e293b; }
+    .checkout-container { max-width: 720px; margin: 0 auto; background: white; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.06); overflow: hidden; }
+    
+    .checkout-header { background: #1e3a8a; color: white; padding: 20px 25px; text-align: center; }
+    .checkout-header h2 { margin: 0; font-size: 22px; }
+    
+    /* Step navigation tabs */
+    .step-nav { display: flex; background: #e2e8f0; border-bottom: 1px solid #cbd5e1; }
+    .step-tab { flex: 1; text-align: center; padding: 12px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; text-decoration: none; border-bottom: 3px solid transparent; }
+    .step-tab.active { background: white; color: #1e40af; border-bottom-color: #2563eb; }
+    
+    .step-content { padding: 30px; display: none; }
+    .step-content.active { display: block; }
+    
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], input[type="month"], input[type="password"], select, textarea {
+      width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #2563eb; }
+    
+    .two-col { display: flex; gap: 15px; }
+    .two-col .form-group { flex: 1; }
+    
+    .radio-pill-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+    .radio-pill-group label { background: #f8fafc; border: 1px solid #cbd5e1; padding: 8px 14px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: 500; }
+    
+    /* Summary Table */
+    .summary-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .summary-table th, .summary-table td { border: 1px solid #e2e8f0; padding: 10px 12px; text-align: left; }
+    .summary-table th { background: #f8fafc; color: #0f172a; }
+    .summary-total { font-size: 18px; font-weight: bold; color: #1e3a8a; }
+    
+    .btn-nav-row { display: flex; justify-content: space-between; margin-top: 25px; }
+    .btn-action { background: #2563eb; color: white; border: none; padding: 10px 22px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-action:hover { background: #1d4ed8; }
+    .btn-cancel { background: #ef4444; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-cancel:hover { background: #dc2626; }
+    .btn-back { background: #64748b; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-container">
+    <div class="checkout-header">
+      <h2>Shopping Cart Checkout &amp; Payment Portal</h2>
+      <p style="font-size: 12px; color: #93c5fd; margin-top: 4px;">Student: M. Arulmurugan (24MIC0121)</p>
+    </div>
+
+    <!-- Step Navigation Links -->
+    <div class="step-nav">
+      <a href="javascript:void(0)" class="step-tab active" id="tabA" onclick="showStep('stepA', 'tabA')">Part A: Customer &amp; Delivery</a>
+      <a href="javascript:void(0)" class="step-tab" id="tabB" onclick="showStep('stepB', 'tabB')">Part B: Payment</a>
+      <a href="javascript:void(0)" class="step-tab" id="tabC" onclick="showStep('stepC', 'tabC')">Part C: Cart Summary</a>
+    </div>
+
+    <!-- Part A: Customer & Delivery Details -->
+    <div class="step-content active" id="stepA">
+      <h3 style="color: #1e3a8a; margin-top: 0;">Part A: Delivery Information</h3>
+      
+      <div class="two-col">
+        <div class="form-group">
+          <label>Customer Name (text):</label>
+          <input type="text" id="custName" value="M. Arulmurugan" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address (email):</label>
+          <input type="email" id="custEmail" value="arulmohandasarulmurugan@gmail.com" required>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label>Mobile Number (tel):</label>
+          <input type="tel" id="custTel" value="9876543210" required>
+        </div>
+        <div class="form-group">
+          <label>Delivery Date (date):</label>
+          <input type="date" id="delDate" value="2026-11-05" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address (textarea):</label>
+        <textarea id="delAddress" rows="2" required>VIT University Campus, Technology Tower, Katpadi</textarea>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label>City (text):</label>
+          <input type="text" id="custCity" value="Vellore" required>
+        </div>
+        <div class="form-group">
+          <label>State (select):</label>
+          <select id="custState" required>
+            <option selected>Tamil Nadu</option>
+            <option>Karnataka</option>
+            <option>Kerala</option>
+            <option>Maharashtra</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>PIN Code (number):</label>
+          <input type="number" id="custPin" value="632014" required>
+        </div>
+      </div>
+
+      <div class="btn-nav-row" style="justify-content: flex-end;">
+        <button type="button" class="btn-action" onclick="showStep('stepB', 'tabB')">Proceed to Payment &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Part B: Payment Details -->
+    <div class="step-content" id="stepB">
+      <h3 style="color: #1e3a8a; margin-top: 0;">Part B: Secure Payment Method</h3>
+
+      <div class="form-group">
+        <label>Payment Method (radios):</label>
+        <div class="radio-pill-group">
+          <label><input type="radio" name="payMethod" value="Credit Card" checked> Credit Card</label>
+          <label><input type="radio" name="payMethod" value="Debit Card"> Debit Card</label>
+          <label><input type="radio" name="payMethod" value="UPI"> UPI</label>
+          <label><input type="radio" name="payMethod" value="Net Banking"> Net Banking</label>
+          <label><input type="radio" name="payMethod" value="Cash on Delivery"> Cash on Delivery</label>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label>Card Holder Name (text):</label>
+          <input type="text" placeholder="Name on card" value="M. Arulmurugan">
+        </div>
+        <div class="form-group">
+          <label>Card Number (text):</label>
+          <input type="text" placeholder="4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8921" value="4532 9821 7731 8921">
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label>Expiry Date (month):</label>
+          <input type="month" value="2028-12">
+        </div>
+        <div class="form-group">
+          <label>CVV (password):</label>
+          <input type="password" maxlength="4" placeholder="***" value="789">
+        </div>
+        <div class="form-group">
+          <label>UPI ID (text):</label>
+          <input type="text" placeholder="username@okhdfcbank" value="arulmurugan@upi">
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 15px;">
+        <label style="font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" checked required> I agree to the Terms and Conditions of service
+        </label>
+      </div>
+
+      <div class="btn-nav-row">
+        <button type="button" class="btn-back" onclick="showStep('stepA', 'tabA')">&larr; Back to Delivery</button>
+        <button type="button" class="btn-action" onclick="showStep('stepC', 'tabC')">Review Order Summary &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Part C: Cart Summary -->
+    <div class="step-content" id="stepC">
+      <h3 style="color: #1e3a8a; margin-top: 0;">Part C: Cart Summary &amp; Final Confirmation</h3>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SonicPro Wireless ANC Headphones</td>
+            <td>1</td>
+            <td>₹4,999.00</td>
+            <td>₹4,999.00</td>
+          </tr>
+          <tr>
+            <td>Type-C Braided Fast Charge Cable</td>
+            <td>2</td>
+            <td>₹450.00</td>
+            <td>₹900.00</td>
+          </tr>
+          <tr>
+            <td>Standard Express Delivery</td>
+            <td>1</td>
+            <td>₹0.00</td>
+            <td>Free</td>
+          </tr>
+          <tr style="background: #f8fafc;">
+            <td colspan="3" align="right" class="summary-total">Grand Total:</td>
+            <td class="summary-total">₹5,899.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="orderStatus" style="display: none; background: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold;">
+        &#10004; Order Placed Successfully! Order ID: #ORD-2026-VIT-24MIC0121
+      </div>
+
+      <div class="btn-nav-row">
+        <button type="button" class="btn-back" onclick="showStep('stepB', 'tabB')">&larr; Edit Payment</button>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn-cancel" onclick="if(confirm('Cancel current order?')) location.reload();">Cancel</button>
+          <button type="button" class="btn-action" style="background: #16a34a;" onclick="document.getElementById('orderStatus').style.display='block';">Place Order</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showStep(stepId, tabId) {
+      document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.step-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(stepId).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

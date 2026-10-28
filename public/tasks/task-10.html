@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Layout using Table</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 20px; background-color: #f1f5f9;">
+
+  <table border="1" cellpadding="15" cellspacing="0" width="100%" style="border-collapse: collapse; background-color: #ffffff; border: 2px solid #334155; box-shadow: 0 4px 6px rgba(0,0,0,0.06);">
+    
+    <!-- HEADER: Spanning 2 columns -->
+    <tr style="background-color: #0f172a; color: #ffffff;">
+      <td colspan="2" align="center" style="padding: 20px;">
+        <h1 style="margin: 0; color: #38bdf8;">VIT Academic &amp; Research Portal</h1>
+        <p style="margin: 5px 0 0 0; color: #94a3b8;">Designed by: M. Arulmurugan | Reg No: 24MIC0121</p>
+      </td>
+    </tr>
+
+    <!-- MIDDLE: Left Menu and Content -->
+    <tr>
+      <!-- Left Menu Column -->
+      <td width="25%" valign="top" style="background-color: #f8fafc; border-right: 2px solid #cbd5e1; padding: 20px;">
+        <h3 style="color: #1e3a8a; border-bottom: 2px solid #2563eb; padding-bottom: 5px; margin-top: 0;">Navigation Menu</h3>
+        <ul style="list-style-type: square; padding-left: 20px; line-height: 2;">
+          <li><a href="#home" style="color: #2563eb; text-decoration: none; font-weight: bold;">Home</a></li>
+          <li><a href="#about" style="color: #2563eb; text-decoration: none;">About Department</a></li>
+          <li><a href="#academics" style="color: #2563eb; text-decoration: none;">Academic Programs</a></li>
+          <li><a href="#research" style="color: #2563eb; text-decoration: none;">Research Labs</a></li>
+          <li><a href="#faculty" style="color: #2563eb; text-decoration: none;">Faculty Directory</a></li>
+          <li><a href="#admissions" style="color: #2563eb; text-decoration: none;">Admissions 2026</a></li>
+          <li><a href="#contact" style="color: #2563eb; text-decoration: none;">Contact Office</a></li>
+        </ul>
+
+        <div style="margin-top: 25px; text-align: center;">
+          <img src="/assets/img/campus1.jpg" alt="Campus Block" width="180" style="border: 1px solid #cbd5e1; border-radius: 4px;">
+          <p style="font-size: 12px; color: #64748b; margin-top: 5px;">Academic Central Block</p>
+        </div>
+      </td>
+
+      <!-- Main Content Column -->
+      <td width="75%" valign="top" style="padding: 25px;">
+        <h2 style="color: #0f172a; margin-top: 0;">Welcome to the School of Computer Science &amp; Engineering</h2>
+        <p>
+          The School of Computer Science &amp; Engineering at VIT provides a cutting-edge curriculum in artificial intelligence, 
+          cloud computing, cyber-security, and modern full-stack web engineering.
+        </p>
+        <p>
+          Our students actively participate in collaborative research, hackathons, and global technology initiatives. 
+          This layout illustrates a classic multi-column website structure built cleanly with HTML <code>&lt;table&gt;</code> elements.
+        </p>
+
+        <h3 style="color: #1e40af; margin-top: 20px;">Key Program Highlights</h3>
+        <table border="1" cellpadding="8" cellspacing="0" width="100%" style="border-collapse: collapse; margin-top: 10px; border-color: #e2e8f0;">
+          <tr style="background-color: #f1f5f9;">
+            <th>Program</th>
+            <th>Duration</th>
+            <th>Specialization</th>
+          </tr>
+          <tr>
+            <td>Integrated M.Sc. CS</td>
+            <td>5 Years</td>
+            <td>Full-Stack &amp; Data Intelligence</td>
+          </tr>
+          <tr>
+            <td>B.Tech Computer Science</td>
+            <td>4 Years</td>
+            <td>Software Engineering &amp; Systems</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- FOOTER: Spanning 2 columns -->
+    <tr style="background-color: #1e293b; color: #ffffff;">
+      <td colspan="2" align="center" style="padding: 15px;">
+        <p style="margin: 0; font-size: 13px; color: #cbd5e1;">&copy; 2026 VIT Academic Portal &bull; All Rights Reserved &bull; M. Arulmurugan (24MIC0121)</p>
+      </td>
+    </tr>
+
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>National Technical Symposium Registration</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 25px; line-height: 1.5; }
+    .container { max-width: 750px; margin: 0 auto; background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    h1 { color: #38bdf8; text-align: center; margin-top: 0; font-size: 26px; }
+    .symp-subtitle { text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 25px; }
+    .media-card { background: #0b1329; border: 1px solid #334155; border-radius: 8px; padding: 18px; margin-bottom: 25px; text-align: center; }
+    .media-card h3 { color: #f472b6; margin-top: 0; font-size: 16px; margin-bottom: 12px; }
+    video { max-width: 100%; border-radius: 6px; border: 1px solid #475569; background: #000; }
+    audio { width: 100%; margin-top: 10px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #cbd5e1; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, input[type="file"] {
+      width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 6px; background-color: #0f172a; color: #f8fafc; font-size: 14px; box-sizing: border-box; outline: none;
+    }
+    input:focus, select:focus { border-color: #38bdf8; }
+    .radio-row, .check-row { display: flex; gap: 20px; font-size: 14px; margin-top: 5px; flex-wrap: wrap; }
+    .radio-row label, .check-row label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-row { display: flex; gap: 15px; margin-top: 25px; }
+    .btn-submit { flex: 2; background-color: #0284c7; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; }
+    .btn-reset { flex: 1; background-color: #475569; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; }
+    .btn-submit:hover { background-color: #0369a1; }
+    .btn-reset:hover { background-color: #334155; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>National Technical Symposium 2026</h1>
+    <div class="symp-subtitle">
+      VIT Annual TechFest &bull; Coordinator: <strong>M. Arulmurugan</strong> (24MIC0121)
+    </div>
+
+    <!-- Media Section: Promotional Video & Audio Welcome Message -->
+    <div class="media-card">
+      <h3>&#127916; Introductory Promotional Video</h3>
+      <video controls poster="/assets/media/symposium_poster.svg" width="600" height="300">
+        <source src="/assets/media/symposium_promo.mp4" type="video/mp4">
+        <source src="/assets/media/symposium_promo.webm" type="video/webm">
+        Your browser does not support video playback.
+      </video>
+
+      <h3 style="margin-top: 20px; color: #38bdf8;">&#127911; Audio Welcome Message</h3>
+      <audio controls>
+        <source src="/assets/media/welcome.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Registration Form with full validation -->
+    <form action="#" method="post" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <label for="pName">Participant Full Name:</label>
+        <input type="text" id="pName" name="pName" placeholder="Enter full name" required minlength="3" maxlength="50" pattern="[A-Za-z\s]+">
+      </div>
+
+      <div class="form-group">
+        <label for="pReg">College Register Number:</label>
+        <input type="text" id="pReg" name="pReg" placeholder="e.g. 24MIC0121" required minlength="5" maxlength="15">
+      </div>
+
+      <div class="form-group">
+        <label for="pCollege">College / Institution Name:</label>
+        <input type="text" id="pCollege" name="pCollege" placeholder="e.g. Vellore Institute of Technology" required minlength="3">
+      </div>
+
+      <div class="form-group">
+        <label for="pEmail">Official Email ID:</label>
+        <input type="email" id="pEmail" name="pEmail" placeholder="participant@institution.edu" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pMobile">Mobile Number:</label>
+        <input type="tel" id="pMobile" name="pMobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pDob">Date of Birth:</label>
+        <input type="date" id="pDob" name="pDob" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender:</label>
+        <div class="radio-row">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pDept">Department:</label>
+        <select id="pDept" name="pDept" required>
+          <option value="">-- Choose Department --</option>
+          <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Electronics & Communication">Electronics & Communication</option>
+          <option value="Electrical & Electronics">Electrical & Electronics</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Technical Skills / Interests:</label>
+        <div class="check-row">
+          <label><input type="checkbox" name="skills" value="Web Dev"> Web Development</label>
+          <label><input type="checkbox" name="skills" value="AI/ML"> Artificial Intelligence</label>
+          <label><input type="checkbox" name="skills" value="CyberSecurity"> Cyber Security</label>
+          <label><input type="checkbox" name="skills" value="Cloud"> Cloud Computing</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pIdCard">Upload Student ID Card (PDF / JPG / PNG):</label>
+        <input type="file" id="pIdCard" name="pIdCard" accept=".pdf, .jpg, .jpeg, .png" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pEventDate">Event Participation Date:</label>
+        <input type="date" id="pEventDate" name="pEventDate" value="2026-11-15" required>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn-submit">Submit Symposium Registration</button>
+        <button type="reset" class="btn-reset">Reset</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

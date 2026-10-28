@@ -1,0 +1,6 @@
+{
+  "name": "FrontEnd Lab: 41 Tasks Mini Project",
+  "description": "Complete FrontEnd Lab mini project containing all 41 HTML, CSS, JavaScript, and Bootstrap tasks with live interactive viewer, code inspector, search, filter, and student portfolio for M. Arulmurugan (24MIC0121).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

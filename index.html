@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrontEnd Lab: 41 Tasks Mini Project - M. Arulmurugan (24MIC0121)</title>
+  <meta name="description" content="Complete FrontEnd Web Development Lab mini project containing all 41 academic tasks, interactive iframe runner, code inspector, search and student portfolio for M. Arulmurugan (24MIC0121)." />
+  <meta property="og:title" content="FrontEnd Lab: 41 Tasks Mini Project" />
+  <meta property="og:description" content="Complete FrontEnd Web Development Lab mini project containing all 41 tasks with live output and source code." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts for Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Top Application Header -->
+  <header class="app-header">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <button class="action-icon-btn menu-toggle-btn" id="menuToggleBtn" title="Toggle Sidebar Navigation" aria-label="Toggle Navigation">
+        &#9776;
+      </button>
+
+      <a href="#" class="header-brand">
+        <div class="brand-icon">&#128187;</div>
+        <div class="brand-info">
+          <h1>FrontEnd Lab <span class="badge-version">41 Tasks</span></h1>
+          <p>Mini Project Showcase &bull; 9 Sections</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Jump to Task Control -->
+    <div class="header-center">
+      <span class="jump-label">&#128269; Jump:</span>
+      <select id="jumpSelect" class="jump-select" aria-label="Select Task"></select>
+      <input type="number" id="jumpNumber" class="jump-input" placeholder="1-41" min="1" max="41" aria-label="Task Number">
+      <button id="jumpBtn" class="jump-btn">Go</button>
+    </div>
+
+    <!-- Right Header Actions & Student Info -->
+    <div class="header-actions">
+      <div class="owner-chip">
+        <span class="owner-chip-name">M. Arulmurugan</span>
+        <span class="owner-chip-reg">Reg No: 24MIC0121</span>
+      </div>
+
+      <button id="themeToggleBtn" class="action-icon-btn" title="Toggle Dark/Light Theme" aria-label="Toggle Theme">
+        &#9790;&#65039;
+      </button>
+
+      <button id="fullscreenBtn" class="action-icon-btn" title="Toggle Fullscreen Mode" aria-label="Fullscreen">
+        &#x26F6;
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Drawer -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-search-box">
+        <div class="search-input-wrapper">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="sidebarSearch" class="sidebar-search" placeholder="Search tasks, keywords, constraints...">
+        </div>
+      </div>
+
+      <!-- Navigation Tree -->
+      <nav class="sidebar-nav" id="sidebarNav"></nav>
+    </aside>
+
+    <!-- Main Content Workspace -->
+    <main class="app-main">
+      
+      <!-- VIEW 1: Home / Dashboard Overview -->
+      <section class="home-view" id="homeView">
+        
+        <!-- Hero Card -->
+        <div class="hero-card">
+          <div class="hero-pill">&#10024; FrontEnd Web Development Lab &bull; CSE2004 / SWE1002</div>
+          <h2>FrontEnd Lab: 41 Tasks Mini Project</h2>
+          <p>
+            An end-to-end laboratory portfolio containing 41 fully implemented, standards-compliant HTML, CSS, 
+            JavaScript, and Bootstrap 5 practice tasks. Features isolated sandbox execution, live code inspection, 
+            and rigorous constraint enforcement.
+          </p>
+
+          <div class="hero-stats">
+            <div class="hero-stat-box">
+              <span class="hero-stat-value">41</span>
+              <span class="hero-stat-label">Total Lab Tasks</span>
+            </div>
+            <div class="hero-stat-box">
+              <span class="hero-stat-value">9</span>
+              <span class="hero-stat-label">Academic Sections</span>
+            </div>
+            <div class="hero-stat-box">
+              <span class="hero-stat-value">100%</span>
+              <span class="hero-stat-label">Vanilla Standards</span>
+            </div>
+            <div class="hero-stat-box">
+              <span class="hero-stat-value">24MIC0121</span>
+              <span class="hero-stat-label">M. Arulmurugan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sections Grid -->
+        <div class="section-grid-title">
+          <span>Curriculum Sections</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: normal;">Click any section card to launch its first task</span>
+        </div>
+
+        <div class="sections-grid" id="sectionsGrid"></div>
+
+      </section>
+
+      <!-- VIEW 2: Task Interactive Viewer -->
+      <section class="task-viewer-view" id="taskView" style="display: none;">
+        
+        <!-- Top Bar -->
+        <div class="viewer-topbar">
+          <div class="viewer-meta">
+            <div class="viewer-breadcrumb" id="viewerBreadcrumb"></div>
+            <div class="viewer-title-row">
+              <h2 id="viewerTitle">Task Title</h2>
+              <span class="constraint-pill" id="viewerConstraint">&#9888; Constraint</span>
+            </div>
+          </div>
+
+          <div class="viewer-controls">
+            <button id="prevTaskBtn" class="btn-ctrl" title="Previous Task (Alt + Left)">
+              &larr; Prev
+            </button>
+            <button id="nextTaskBtn" class="btn-ctrl btn-primary-ctrl" title="Next Task (Alt + Right)">
+              Next &rarr;
+            </button>
+            <button id="reloadIframeBtn" class="btn-ctrl" title="Reload Live Frame">
+              &#8635; Reload
+            </button>
+            <button id="openNewTabBtn" class="btn-ctrl" title="Open Standalone in New Tab">
+              &#8599; Open in New Tab
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabs Bar -->
+        <div class="viewer-tabs">
+          <button id="tabBtnOutput" class="tab-btn active">
+            &#128065; Live Output
+          </button>
+          <button id="tabBtnCode" class="tab-btn">
+            &lt;/&gt; View Code
+          </button>
+        </div>
+
+        <!-- Content Area: Left Spec Panel + Right Output/Code Panel -->
+        <div class="viewer-content-split">
+          
+          <!-- Left Panel: Specifications & Checklist -->
+          <div class="viewer-panel-left">
+            <div class="spec-box">
+              <div class="spec-box-title">&#128221; Task Requirements</div>
+              <p class="spec-desc" id="specDesc"></p>
+              <ul class="req-checklist" id="reqChecklist"></ul>
+            </div>
+
+            <div class="constraint-callout" id="constraintCallout"></div>
+
+            <div>
+              <span class="file-info-badge" id="fileInfoBadge">/tasks/task-01.html</span>
+            </div>
+          </div>
+
+          <!-- Right Panel: Live Output vs Code -->
+          <div class="viewer-panel-right">
+            
+            <!-- Pane 1: Live Iframe Sandbox -->
+            <div class="tab-pane active" id="paneOutput">
+              <div class="iframe-container">
+                <iframe id="taskIframe" sandbox="allow-scripts allow-forms allow-same-origin allow-modals" title="Task Live Preview"></iframe>
+              </div>
+            </div>
+
+            <!-- Pane 2: View Code -->
+            <div class="tab-pane" id="paneCode">
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-filename">
+                    <span>&#128196;</span>
+                    <span id="codeFileName">task-01.html</span>
+                  </div>
+                  <button id="copyCodeBtn" class="btn-copy">
+                    &#128203; Copy Code
+                  </button>
+                </div>
+                <pre class="code-scrollable"><code id="codeContent"></code></pre>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Application Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>FrontEnd Lab: 41 Tasks Mini Project</strong> &bull; Author: <strong>M. Arulmurugan</strong> (Reg No: <strong>24MIC0121</strong>) &bull; VIT University
+    </div>
+    <div class="footer-nav-shortcuts">
+      <span>Shortcuts: <kbd>Alt</kbd> + <kbd>&larr;</kbd> Prev &bull; <kbd>Alt</kbd> + <kbd>&rarr;</kbd> Next &bull; <kbd>Alt</kbd> + <kbd>H</kbd> Home</span>
+    </div>
+  </footer>
+
+  <!-- Registry Data & Application Logic -->
+  <script src="/js/tasks.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

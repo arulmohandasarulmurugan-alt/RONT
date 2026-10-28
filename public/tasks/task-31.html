@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Traffic Signal</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; text-align: center; padding: 40px 20px; }
+    .signal-pole {
+      width: 140px;
+      background: #1e293b;
+      border: 4px solid #334155;
+      border-radius: 40px;
+      padding: 25px 0;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .light {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0.25;
+      transition: opacity 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .light.red { background-color: #ef4444; }
+    .light.yellow { background-color: #eab308; }
+    .light.green { background-color: #22c55e; }
+
+    .light.active.red { opacity: 1; box-shadow: 0 0 30px #ef4444; transform: scale(1.1); }
+    .light.active.yellow { opacity: 1; box-shadow: 0 0 30px #eab308; transform: scale(1.1); }
+    .light.active.green { opacity: 1; box-shadow: 0 0 30px #22c55e; transform: scale(1.1); }
+
+    #signalLabel {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      min-height: 40px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Interactive Traffic Signal</h1>
+  <p style="color: #94a3b8; font-size: 14px;">Hover your mouse over each signal light to view status</p>
+
+  <div class="signal-pole">
+    <div id="redLight" class="light red" onmouseover="activateLight('red', 'STOP', '#ef4444')" onmouseout="resetLights()"></div>
+    <div id="yellowLight" class="light yellow" onmouseover="activateLight('yellow', 'READY', '#eab308')" onmouseout="resetLights()"></div>
+    <div id="greenLight" class="light green" onmouseover="activateLight('green', 'GO', '#22c55e')" onmouseout="resetLights()"></div>
+  </div>
+
+  <div id="signalLabel">HOVER ON A LIGHT</div>
+
+  <p style="font-size: 12px; color: #64748b; margin-top: 30px;">Student: M. Arulmurugan (24MIC0121)</p>
+
+  <script>
+    function activateLight(color, text, textColor) {
+      resetLights();
+      document.getElementById(color + 'Light').classList.add('active');
+      const label = document.getElementById('signalLabel');
+      label.textContent = text;
+      label.style.color = textColor;
+    }
+
+    function resetLights() {
+      document.querySelectorAll('.light').forEach(l => l.classList.remove('active'));
+      const label = document.getElementById('signalLabel');
+      label.textContent = 'HOVER ON A LIGHT';
+      label.style.color = '#94a3b8';
+    }
+  </script>
+
+</body>
+</html>

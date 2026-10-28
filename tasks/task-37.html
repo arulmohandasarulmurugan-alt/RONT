@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Exam Question Interface</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; margin: 30px; color: #1e293b; }
+    .exam-box { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+    .exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 20px; }
+    .exam-header h3 { margin: 0; color: #1e40af; }
+    .q-number { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; }
+
+    .question-text { font-size: 17px; font-weight: 600; line-height: 1.5; margin-bottom: 20px; color: #0f172a; }
+
+    .options-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+    .option-item {
+      padding: 12px 18px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .option-item:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .option-item.selected {
+      background: #eff6ff;
+      border-color: #2563eb;
+      color: #1d4ed8;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(37,99,235,0.15);
+    }
+
+    #btnSubmitExam {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    #btnSubmitExam.btn-highlight {
+      background: #15803d !important;
+      transform: scale(1.03);
+    }
+
+    #examStatus {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: none;
+    }
+    .status-success { background: #ecfdf5; border: 1px solid #10b981; color: #065f46; }
+    .status-warn { background: #fffbeb; border: 1px solid #f59e0b; color: #b45309; }
+  </style>
+</head>
+<body onkeydown="handleExamKey(event)">
+
+  <div class="exam-box">
+    <div class="exam-header">
+      <h3>VIT Online Assessment 2026</h3>
+      <span class="q-number">Question 1 of 1</span>
+    </div>
+
+    <div class="question-text">
+      Which HTML5 element is used to specify a footer for a document or section?
+    </div>
+
+    <div class="options-list">
+      <div class="option-item" onclick="selectOption(this, 'A')">A. &lt;bottom&gt;</div>
+      <div class="option-item" onclick="selectOption(this, 'B')">B. &lt;footer&gt;</div>
+      <div class="option-item" onclick="selectOption(this, 'C')">C. &lt;section-footer&gt;</div>
+      <div class="option-item" onclick="selectOption(this, 'D')">D. &lt;foot&gt;</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <button id="btnSubmitExam" onclick="submitAnswer()" onmouseover="this.classList.add('btn-highlight')" onmouseout="this.classList.remove('btn-highlight')">
+        Submit Answer (Enter)
+      </button>
+      <span style="font-size: 12px; color: #64748b;">Press <strong>Enter</strong> to submit</span>
+    </div>
+
+    <div id="examStatus"></div>
+
+    <div style="margin-top: 25px; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+      Candidate: M. Arulmurugan (24MIC0121) &bull; Q37 Exam Interface
+    </div>
+  </div>
+
+  <script>
+    let selectedAnswer = null;
+
+    function selectOption(el, ans) {
+      document.querySelectorAll('.option-item').forEach(item => item.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedAnswer = ans;
+    }
+
+    function submitAnswer() {
+      const status = document.getElementById('examStatus');
+      if (selectedAnswer) {
+        status.className = "status-success";
+        status.textContent = "Answer Submitted Successfully! Selected: Option " + selectedAnswer;
+        status.style.display = "block";
+      } else {
+        status.className = "status-warn";
+        status.textContent = "Please select an answer option first!";
+        status.style.display = "block";
+      }
+    }
+
+    function handleExamKey(e) {
+      if (e.key === 'Enter') {
+        submitAnswer();
+      }
+    }
+  </script>
+
+</body>
+</html>

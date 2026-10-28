@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GameZone - Level Up Your Gaming Experience</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0f19; color: #f8fafc; }
+
+    /* FIXED Header */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid #7c3aed;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #a855f7;
+    }
+
+    .btn-play-now {
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+      color: #ffffff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-play-now:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+    }
+
+    /* 70% Browser Height Banner */
+    .hero-banner {
+      margin-top: 70px;
+      height: 70vh;
+      min-height: 480px;
+      background: url('/assets/img/gaming_banner.svg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #e2e8f0;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    .btn-explore {
+      background: #06b6d4;
+      color: #042f2e;
+      border: none;
+      padding: 14px 34px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-explore:hover {
+      background: #22d3ee;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED Header -->
+  <header class="fixed-header">
+    <div class="logo">GameZone</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#tournaments">Tournaments</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn-play-now">Play Now</button>
+  </header>
+
+  <!-- Banner (70% Height) with Centered Content -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Level Up Your Gaming Experience</h1>
+      <p class="hero-subtitle">Join exciting tournaments and explore the latest games.</p>
+      <button class="btn-explore">Explore Games</button>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    Student: M. Arulmurugan | Register No: 24MIC0121 | GameZone Portal 2026
+  </div>
+
+</body>
+</html>

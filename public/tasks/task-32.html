@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Weather Status Display</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; color: #1e293b; text-align: center; padding: 40px 20px; }
+    h2 { color: #1e40af; margin-top: 0; }
+    .panel-container { display: flex; justify-content: center; gap: 20px; max-width: 800px; margin: 30px auto; flex-wrap: wrap; }
+    
+    .weather-card {
+      flex: 1 1 200px;
+      background: white;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 30px 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .weather-icon { font-size: 48px; margin-bottom: 12px; }
+    .weather-title { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+    .weather-advice { font-size: 14px; font-weight: 700; min-height: 20px; color: #64748b; }
+
+    /* Highlight states on mouse over */
+    .weather-card.hover-sunny {
+      border-color: #f59e0b;
+      background: #fffbeb;
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+    }
+    .weather-card.hover-cloudy {
+      border-color: #64748b;
+      background: #f1f5f9;
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(100, 116, 139, 0.2);
+    }
+    .weather-card.hover-rainy {
+      border-color: #0284c7;
+      background: #f0f9ff;
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Live Weather Advisory</h2>
+  <p style="color: #64748b; font-size: 14px;">Hover over any atmospheric panel for personalized tips</p>
+
+  <div class="panel-container">
+    
+    <!-- Sunny Panel -->
+    <div class="weather-card" id="cardSunny" onmouseover="handleWeatherOver('cardSunny', 'hover-sunny', 'advSunny', 'Perfect Day!', '#d97706')" onmouseout="handleWeatherOut('cardSunny', 'hover-sunny', 'advSunny')">
+      <div class="weather-icon">&#9728;&#65039;</div>
+      <div class="weather-title">Sunny</div>
+      <div class="weather-advice" id="advSunny">32&deg;C &bull; Clear Skies</div>
+    </div>
+
+    <!-- Cloudy Panel -->
+    <div class="weather-card" id="cardCloudy" onmouseover="handleWeatherOver('cardCloudy', 'hover-cloudy', 'advCloudy', 'Cloudy Weather', '#475569')" onmouseout="handleWeatherOut('cardCloudy', 'hover-cloudy', 'advCloudy')">
+      <div class="weather-icon">&#9729;&#65039;</div>
+      <div class="weather-title">Cloudy</div>
+      <div class="weather-advice" id="advCloudy">26&deg;C &bull; Overcast</div>
+    </div>
+
+    <!-- Rainy Panel -->
+    <div class="weather-card" id="cardRainy" onmouseover="handleWeatherOver('cardRainy', 'hover-rainy', 'advRainy', 'Carry an Umbrella!', '#0369a1')" onmouseout="handleWeatherOut('cardRainy', 'hover-rainy', 'advRainy')">
+      <div class="weather-icon">&#127783;&#65039;</div>
+      <div class="weather-title">Rainy</div>
+      <div class="weather-advice" id="advRainy">22&deg;C &bull; Precipitation</div>
+    </div>
+
+  </div>
+
+  <p style="font-size: 13px; color: #94a3b8; margin-top: 30px;">Student: M. Arulmurugan (24MIC0121) &bull; Q32 Weather Events</p>
+
+  <script>
+    const defaults = {
+      advSunny: "32°C • Clear Skies",
+      advCloudy: "26°C • Overcast",
+      advRainy: "22°C • Precipitation"
+    };
+
+    function handleWeatherOver(cardId, className, textId, message, color) {
+      document.getElementById(cardId).classList.add(className);
+      const textEl = document.getElementById(textId);
+      textEl.textContent = message;
+      textEl.style.color = color;
+    }
+
+    function handleWeatherOut(cardId, className, textId) {
+      document.getElementById(cardId).classList.remove(className);
+      const textEl = document.getElementById(textId);
+      textEl.textContent = defaults[textId];
+      textEl.style.color = '#64748b';
+    }
+  </script>
+
+</body>
+</html>

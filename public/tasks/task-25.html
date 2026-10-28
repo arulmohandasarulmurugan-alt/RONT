@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q25: Employee Registration JS Table Output</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; margin: 30px; color: #1e293b; }
+    .container { max-width: 750px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    h2 { color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-top: 0; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+    .full-width { grid-column: span 2; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+      width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; box-sizing: border-box; outline: none;
+    }
+    .btn-submit { background: #2563eb; color: white; border: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .btn-submit:hover { background: #1d4ed8; }
+    
+    /* Result Table Styling */
+    #outputContainer { margin-top: 30px; display: none; }
+    .result-table { width: 100%; border-collapse: collapse; margin-top: 12px; background: white; }
+    .result-table th, .result-table td { border: 1px solid #cbd5e1; padding: 10px 14px; text-align: left; font-size: 14px; }
+    .result-table th { background: #1e40af; color: white; width: 35%; }
+    .error-msg { color: #dc2626; background: #fee2e2; border: 1px solid #fca5a5; padding: 10px; border-radius: 6px; margin-bottom: 15px; display: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Q25: Employee Registration (JavaScript Table Verification)</h2>
+    <p style="font-size: 13px; color: #64748b;">Author: M. Arulmurugan (24MIC0121)</p>
+
+    <div id="errorAlert" class="error-msg"></div>
+
+    <form id="empForm" onsubmit="validateAndDisplayTable(event)">
+      <div class="form-grid">
+        <div>
+          <label>Employee Name:</label>
+          <input type="text" id="empName" placeholder="M. Arulmurugan">
+        </div>
+        <div>
+          <label>Employee ID:</label>
+          <input type="text" id="empId" placeholder="EMP-24MIC0121">
+        </div>
+        <div>
+          <label>Email Address:</label>
+          <input type="email" id="empEmail" placeholder="employee@vit.ac.in">
+        </div>
+        <div>
+          <label>Mobile Number:</label>
+          <input type="tel" id="empMobile" placeholder="9876543210">
+        </div>
+        <div>
+          <label>Date of Birth:</label>
+          <input type="date" id="empDob">
+        </div>
+        <div>
+          <label>Date of Joining:</label>
+          <input type="date" id="empDoj">
+        </div>
+        <div>
+          <label>Gender:</label>
+          <select id="empGender">
+            <option value="">-- Select Gender --</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Department:</label>
+          <select id="empDept">
+            <option value="">-- Select Department --</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Software Systems">Software Systems</option>
+          </select>
+        </div>
+        <div class="full-width">
+          <label>Residential Address:</label>
+          <textarea id="empAddress" rows="2" placeholder="Full address..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Validate &amp; Generate Table</button>
+    </form>
+
+    <!-- Output Section with formatted TABLE -->
+    <div id="outputContainer">
+      <h3 style="color: #059669; border-bottom: 2px solid #10b981; padding-bottom: 6px;">
+        &#10004; Formatted Employee Record Table
+      </h3>
+      <table class="result-table">
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function validateAndDisplayTable(e) {
+      e.preventDefault();
+      const errorDiv = document.getElementById('errorAlert');
+      const outputDiv = document.getElementById('outputContainer');
+      errorDiv.style.display = 'none';
+
+      const fields = [
+        { label: "Employee Name", value: document.getElementById('empName').value.trim() },
+        { label: "Employee ID", value: document.getElementById('empId').value.trim() },
+        { label: "Email Address", value: document.getElementById('empEmail').value.trim() },
+        { label: "Mobile Number", value: document.getElementById('empMobile').value.trim() },
+        { label: "Date of Birth", value: document.getElementById('empDob').value },
+        { label: "Date of Joining", value: document.getElementById('empDoj').value },
+        { label: "Gender", value: document.getElementById('empGender').value },
+        { label: "Department", value: document.getElementById('empDept').value },
+        { label: "Address", value: document.getElementById('empAddress').value.trim() }
+      ];
+
+      for (let f of fields) {
+        if (!f.value) {
+          errorDiv.textContent = "Error: Please fill in the '" + f.label + "' field. No fields can be empty!";
+          errorDiv.style.display = 'block';
+          outputDiv.style.display = 'none';
+          return;
+        }
+      }
+
+      // Build formatted table
+      let html = '';
+      fields.forEach(f => {
+        html += '<tr><th>' + f.label + '</th><td>' + f.value + '</td></tr>';
+      });
+
+      document.getElementById('tableBody').innerHTML = html;
+      outputDiv.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

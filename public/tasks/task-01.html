@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q1: Local Web Server Installation &amp; Execution Output</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background: #0f172a; color: #f8fafc; line-height: 1.5; }
+    .header { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { margin: 0; font-size: 22px; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    h2 { color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 8px; margin-top: 0; font-size: 18px; }
+    .img-frame { border: 2px solid #475569; border-radius: 8px; overflow: hidden; background: #000; margin: 15px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+    .img-frame img { width: 100%; display: block; }
+    .badge-live { background: #10b981; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+    .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+    .status-tile { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; }
+    .status-tile strong { color: #38bdf8; display: block; font-size: 13px; }
+    .status-tile span { font-size: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>Local Web Server Installation &amp; Execution Output</h1>
+      <p style="margin: 4px 0 0 0; font-size: 13px; color: #bfdbfe;">Student: <strong>M. Arulmurugan</strong> | Register No: <strong>24MIC0121</strong> | Course: CSE2004 / SWE1002</p>
+    </div>
+    <span class="badge-live">&#9679; Apache Server Active</span>
+  </div>
+
+  <div class="card">
+    <h2>1. Running XAMPP Control Panel (Visual Verification)</h2>
+    <div class="img-frame">
+      <img src="/assets/img/xampp_server.jpg" alt="XAMPP Control Panel Running Apache on Port 80 and 443">
+    </div>
+    <div class="status-grid">
+      <div class="status-tile">
+        <strong>Server Module:</strong>
+        <span>Apache 2.4.58</span>
+      </div>
+      <div class="status-tile">
+        <strong>Process ID (PID):</strong>
+        <span>4520</span>
+      </div>
+      <div class="status-tile">
+        <strong>Listening Ports:</strong>
+        <span>80 (HTTP), 443 (HTTPS)</span>
+      </div>
+      <div class="status-tile">
+        <strong>Status:</strong>
+        <span style="color: #10b981;">Running &bull; Verified</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Localhost Verification Seal</h2>
+    <div style="background: #022c22; border: 1px solid #059669; color: #a7f3d0; padding: 15px; border-radius: 8px; font-size: 14px;">
+      &#10004; Verified: Localhost test page successfully served via Apache HTTP Server at <code>http://localhost:80/</code>. Prepared for FrontEnd Lab assignments by <strong>M. Arulmurugan (24MIC0121)</strong>.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Hover Greeting</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8fafc; text-align: center; padding: 50px 20px; color: #1e293b; }
+    .card { max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    
+    #pageText {
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e40af;
+      margin: 25px 0;
+      min-height: 48px;
+      transition: color 0.2s;
+    }
+
+    .btn-hover {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-hover:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <p style="color: #64748b; font-size: 14px; margin-top: 0;">Hover your cursor over the button below:</p>
+
+    <!-- Page Text Target -->
+    <div id="pageText">Explore Institutional Campus</div>
+
+    <button id="vitBtn" class="btn-hover" onmouseover="greetVIT()" onmouseout="restoreGreeting()">
+      Hover Over Me
+    </button>
+
+    <div style="margin-top: 35px; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+      Student: M. Arulmurugan (24MIC0121) &bull; Q33 Mouseover Demo
+    </div>
+  </div>
+
+  <script>
+    const originalText = "Explore Institutional Campus";
+
+    function greetVIT() {
+      const el = document.getElementById('pageText');
+      el.textContent = "Welcome to VIT!";
+      el.style.color = "#059669";
+    }
+
+    function restoreGreeting() {
+      const el = document.getElementById('pageText');
+      el.textContent = originalText;
+      el.style.color = "#1e40af";
+    }
+  </script>
+
+</body>
+</html>
